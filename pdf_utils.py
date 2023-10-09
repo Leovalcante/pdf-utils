@@ -11,7 +11,9 @@ import pikepdf
 @click.argument("pdf-file", type=click.Path(exists=True))
 def pdf_utils(encrypt, decrypt, pdf_file):
     if encrypt and decrypt:
-        raise click.BadOptionUsage("use encrypt or decrypt one at time")
+        raise click.BadOptionUsage(
+            "encrypt/decrypt", "use encrypt or decrypt one at time"
+        )
 
     if encrypt or decrypt:
         password = getpass("Password: ")
